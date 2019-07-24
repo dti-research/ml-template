@@ -1,3 +1,10 @@
+# Copyright (c) {% now 'utc', '%Y' %}, {{ cookiecutter.author_name }}
+# All rights reserved.
+#
+# This source code is licensed under the {{ cookiecutter.open_source_license }}-style license found in the
+# LICENSE file in the root directory of this source tree.
+
+
 # -*- coding: utf-8 -*-
 import click
 import logging
@@ -23,7 +30,7 @@ if __name__ == '__main__':
     # not used in this stub but often useful for finding various files
     project_dir = Path(__file__).resolve().parents[2]
 
-    # find .env automagically by walking up directories until it's found, then
+    # find .env automatically by walking up directories until it's found, then
     # load up the .env entries as environment variables
     load_dotenv(find_dotenv())
 
