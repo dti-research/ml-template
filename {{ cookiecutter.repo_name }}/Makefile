@@ -1,12 +1,14 @@
-.PHONY: clean data lint requirements sync_data_to_s3 sync_data_from_s3
+.PHONY: clean data lint requirements {% if cookiecutter.use_remote == 'yes' %} sync_data_to_s3 sync_data_from_s3 {% endif %}
 
 #################################################################################
 # GLOBALS                                                                       #
 #################################################################################
 
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+{% if cookiecutter.use_remote == 'yes' %}
 BUCKET = {{ cookiecutter.s3_bucket }}
 PROFILE = {{ cookiecutter.aws_profile }}
+{% endif %}
 PROJECT_NAME = {{ cookiecutter.repo_name }}
 PYTHON_INTERPRETER = {{ cookiecutter.python_interpreter }}
 
@@ -34,10 +36,11 @@ clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
 
-## Lint using flake8
+## Lint using user-chosen linter
 lint:
-	flake8 src
+	{{cookiecutter.linter}} src
 
+{% if cookiecutter.use_remote == 'yes' %}
 ## Upload Data to S3
 sync_data_to_s3:
 ifeq (default,$(PROFILE))
@@ -53,6 +56,7 @@ ifeq (default,$(PROFILE))
 else
 	aws s3 sync s3://$(BUCKET)/data/ data/ --profile $(PROFILE)
 endif
+{% endif %}
 
 ## Set up python interpreter environment
 create_environment:

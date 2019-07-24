@@ -5,11 +5,12 @@
 click
 Sphinx
 coverage
+{% if cookiecutter.use_remote == 'yes'%}
 awscli
-flake8
+{% endif %}
+{{cookiecutter.linter}}
 python-dotenv>=0.5.1
 {% if cookiecutter.python_interpreter != 'python3' %}
-
 # backwards compatibility
 pathlib2
 {% endif %}
