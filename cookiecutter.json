@@ -4,6 +4,7 @@
     "author_name": "Your name",
     "organization": "Your organizations name",
     "description": "A short description of the project.",
+    "project_dir": "The location of your project",
     "open_source_license": ["MIT", "BSD-3-Clause", "No license file"],
     "linter": ["flake8", "pylint", "pycodestyle"],
     "python_interpreter": ["python3", "python"]
