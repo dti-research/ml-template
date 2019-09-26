@@ -15,8 +15,6 @@ Project Organization
     │   ├── intermediate   <- Intermediate data that has been transformed.
     │   └── processed      <- The final, canonical data sets for modeling.
     │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
     ├── models             <- Trained and serialized models, model predictions, or model summaries
     │
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
